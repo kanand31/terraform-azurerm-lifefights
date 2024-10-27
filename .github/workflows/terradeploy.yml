@@ -25,9 +25,11 @@ jobs:
         with:
          terraform_version: "1.8.5"
 
-      - run: |
+      - name: Write Terraform Credentials
+        run: |
+          mkdir -p ~/.terraform.d
+          echo 'credentials "app.terraform.io" { token = "${{ secrets.TFC_API_TOKEN }}" }' > ~/.terraform.d/credentials.tfrc.json
 
-         terraform login  --token ${{ secrets.TERRAFORM_CLOUD_TOKEN }} app.terraform.io
 
       - run: |
 
