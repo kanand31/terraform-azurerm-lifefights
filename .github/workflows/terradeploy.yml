@@ -3,6 +3,7 @@ name: Release Terraform Module
 
 
 on:
+  workflow_dispatch:
 
   push:
 
