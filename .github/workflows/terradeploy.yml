@@ -27,7 +27,7 @@ jobs:
 
       - run: |
 
-         terraform login  --token ${{ secrets.TERRAFORM_CLOUD_TOKEN }}
+         terraform login  --token ${{ secrets.TERRAFORM_CLOUD_TOKEN }} app.terraform.io
 
       - run: |
 
