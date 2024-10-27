@@ -26,7 +26,7 @@ jobs:
 
       - run: |
 
-         terraform login -add -status-code 0 -no-color -org=Buildfromscratch -token ${{ secrets.TERRAFORM_CLOUD_TOKEN }}
+         terraform login  --token ${{ secrets.TERRAFORM_CLOUD_TOKEN }}
 
       - run: |
 
