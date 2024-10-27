@@ -1,0 +1,33 @@
+name: Release Terraform Module
+
+
+
+on:
+
+  push:
+
+    tags: [ "v*"]
+
+
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v3
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+         terraform_version: "1.8.5"
+
+      - run: |
+
+         terraform login -add -status-code 0 -no-color -org=Buildfromscratch -token ${{ secrets.TERRAFORM_CLOUD_TOKEN }}
+
+      - run: |
+
+          terraform module publish -source=https://github.com/kanand31/terraform-azurerm-lifefights -version ${{ github.ref_name }} -replace
